@@ -74,7 +74,7 @@ _"Sphynx cat"_ or _"funny cat memes"_ retrieves topical, clustered content.
 ---
 
 **For cat lovers, researchers, and anyone seeking credible, focused information about our feline friends!**
-[See the full technical report for implementation details.][^1]
+[See the full technical report for implementation details.](https://github.com/sharona1ex/Search-Engine-for-Cats/blob/a9103c4f5559f4c55fde4de21c7bdc096160fadb/CS%206322_IR%20report_Team%202_Search%20engine%20for%20Cats.pdf)[^1]
 
 [^1]: CS-6322_IR-report_Team-2_Search-engine-for-Cats.pdf
 
