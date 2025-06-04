@@ -1,6 +1,6 @@
+<img src="https://static.vecteezy.com/system/resources/thumbnails/058/049/886/small/playful-kitten-peeking-over-edge-with-curious-expression-png.png" class="logo" width="120"/>
 
-
-## Search Engine for Cats <img src="https://static.vecteezy.com/system/resources/thumbnails/058/049/886/small/playful-kitten-peeking-over-edge-with-curious-expression-png.png" class="logo" width="120"/>
+## Search Engine for Cats
 
 A modular, topic-focused search engine that crawls, indexes, and ranks web pages related to cats—covering everything from adoption and health to behavior and care. Built for the CS 6322 Information Retrieval course at The University of Texas at Dallas, this project leverages advanced IR techniques to deliver relevant, high-quality cat-related content.
 
