@@ -1,0 +1,62 @@
+My commands :
+
+
+vim ~/.bashrc
+export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
+export APACHE_SOLR_HOME=/Ubuntu/home/sharon/solr-8.11.0
+export NUTCH_RUNTIME_HOME = /Ubuntu/home/sharon/apache-nutch-1.20
+source ~/.bashrc
+
+echo $JAVA_HOME
+
+vim /etc/hosts
+
+wget https://archive.apache.org/dist/nutch/1.15/apache-nutch-1.20-bin.tar.gz
+
+tar -xvf apache-nutch-1.20-bin.tar.gz
+
+${NUTCH_RUNTIME_HOME}/bin/nutch
+
+vi ${NUTCH_RUNTIME_HOME}/conf/nutch-site.xml
+
+<!-- HTTP properties -->
+
+<property>
+  <name>http.agent.name</name>
+  <value>Nutch</value>
+</property>
+
+<!-- plugin properties -->
+
+<property>
+  <name>plugin.includes</name>
+  <value>protocol-http|urlfilter-(regex|validator)|parse-(html|tika)|index-(basic|anchor)|indexer-solr|scoring-opic|urlnormalizer-(pass|regex|basic)</value>
+</property>
+
+mkdir -p ${NUTCH_RUNTIME_HOME}/urls
+
+touch ${NUTCH_RUNTIME_HOME}/urls/seed.txt
+
+vi ${NUTCH_RUNTIME_HOME}/urls/seed.txt
+
+wget https://archive.apache.org/dist/lucene/solr/8.11.0/solr-8.11.0
+
+tar -xvf solr-7.3.1.tgz
+
+mkdir -p ${APACHE_SOLR_HOME}/server/solr/configsets/nutch/
+
+cp -r ${APACHE_SOLR_HOME}/server/solr/configsets/_default/* ${APACHE_SOLR_HOME}/server/solr/configsets/nutch/
+
+rm ${APACHE_SOLR_HOME}/server/solr/configsets/nutch/conf/managed-schema
+
+wget https://raw.githubusercontent.com/apache/nutch/master/src/plugin/indexer-solr/schema.xml
+
+cp schema.xml ${APACHE_SOLR_HOME}/server/solr/configsets/nutch/conf/
+
+${APACHE_SOLR_HOME}/bin/solr start
+
+${APACHE_SOLR_HOME}/bin/solr create -c nutch -d ${APACHE_SOLR_HOME}/server/solr/configsets/nutch/conf/
+
+Commands
+
+${NUTCH_RUNTIME_HOME}/bin/crawl -i -D solr.server.url=http://localhost:8983/solr/nutch -s ${NUTCH_RUNTIME_HOME}/urls ${NUTCH_RUNTIME_HOME}/crawl 10

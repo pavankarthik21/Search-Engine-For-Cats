@@ -1,0 +1,72 @@
+<div class="search-container">
+  <div class="search-options">
+    <input type="text" [(ngModel)]="query" placeholder="Enter your search query" />
+    <button (click)="search()">Search</button>
+    <br /><br />
+    <div class="row">
+      <label>
+        <input type="radio" name="relevanceModel" value="page_rank" [(ngModel)]="searchType" />
+        Page Rank </label><br />
+      <label>
+        <input type="radio" name="relevanceModel" value="hits" [(ngModel)]="searchType" />
+        HITS </label><br />
+      <label>
+        <input type="radio" name="clustering" value="flat_clustering" [(ngModel)]="searchType" />
+        Flat Clustering </label><br />
+      <label>
+        <input type="radio" name="clustering" value="aglo_single_clustering" [(ngModel)]="searchType" />
+        Aglo Single Clustering </label><br />
+      <label>
+        <input type="radio" name="clustering" value="aglo_complete_clustering" [(ngModel)]="searchType" />
+        Aglo Complete Clustering </label><br />
+      <label>
+        <input type="radio" name="queryExpansion" value="roc_qe" [(ngModel)]="searchType" />
+        Rocchio </label><br />
+      <label>
+        <input type="radio" name="queryExpansion" value="association_qe" [(ngModel)]="searchType" />
+        Association </label><br />
+      <label>
+        <input type="radio" name="queryExpansion" value="metric_qe" [(ngModel)]="searchType" />
+        Metric </label><br />
+      <label>
+        <input type="radio" name="queryExpansion" value="scalar_qe" [(ngModel)]="searchType" />
+        Scalar
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="results-container">
+  <div class="column">
+    <h2>Search Results from our Custom Search Engine</h2>
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="!loading">
+
+      <div *ngIf="searchResults">
+        <div *ngIf="searchResultsEngine[0].expanded_query">
+          <h3>Expanded Query of Result:</h3>
+          <p>{{ searchResultsEngine[0].expanded_query }}</p>
+        </div>
+        <ul style="list-style-type: none">
+          <li *ngFor="let result of searchResultsEngine">
+            <h3>{{ result.title }}</h3>
+            <a [href]="result.url" target="_blank"> {{ result.url }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="column" style="margin-left: -20px">
+    <h3>Google Search results</h3>
+    <ul style="list-style-type: none">
+      <li *ngFor="let result of searchResults">
+        <h3>{{ result.title }}</h3>
+        <a [href]="result.link" target="_blank"> {{ result.link }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="column">
+    <h3>Bing Search results</h3>
+    <iframe [src]="bingUrl"></iframe>
+  </div>
+</div>
