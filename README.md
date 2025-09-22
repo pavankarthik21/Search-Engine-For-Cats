@@ -65,8 +65,8 @@ _"Sphynx cat"_ or _"funny cat memes"_ retrieves topical, clustered content.
 
 ### Team
 
-- Avaneesh Ramaseshan Baskaraswaminathan (UI, Integration)
 - Venkata Subbaiah Pavan Karthik Navuluru (Indexing, Relevance Models)
+- Avaneesh Ramaseshan Baskaraswaminathan (UI, Integration)
 - Dhanyan Muralidharan (Clustering)
 - Varsha Viswanathan (Crawling)
 - Sharon T Alexander (Query Expansion)
